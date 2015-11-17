@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/waltz/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="shortcut icon" href="../../assets/ico/favicon.png">-->
+
+    <title>Last Waltz</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navmenu-push.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body ng-app="app" ng-controller="index_Ctrl">
+    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
+      <a class="navmenu-brand" href="/">The Last Waltz</a>
+      <ul class="nav navmenu-nav">
+        <li ng-repeat="song in setList track by $index" ng-click="openSong($index)">
+          <a href="">{{song.title}}</a></li>
+      </ul>
+    </div>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+      <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="container">
+      <div class="page-header" ng-cloak>
+        <!-- SONG TITLE -->
+        
+        <h1 ng-show="songIndex<0">The Last Waltz</h1>
+        <h1 ng-show="songIndex>=0"><small>{{songIndex + 1}}</small> {{setList[songIndex].title}}</h1>
+      </div>
+      
+      <div class="text-right">
+        <button class="btn btn-default" ng-disabled="songIndex==0" ng-click="prevSong()">Prev</button>
+        <button class="btn btn-default" ng-disabled="songIndex==setList.length-1" ng-click="nextSong()">Next</button>        
+        <button class="btn btn-default btn-sm" ng-click="chords=!chords">chords</button>
+      </div>
+      <hr />
+	     <div ng-include="tempUrl"></ng-include>
+      
+      <p class="lead">This example demonstrates the use of the offcanvas plugin with a push effect.</p>
+      <p>You get the push effect by setting the <code>canvas</code> option to 'body'.</p>
+      <p>Also take a look at the example for a navmenu with <a href="../navmenu">slide in effect</a> and <a href="../navmenu-reveal">reveal effect</a>.</p>
+    </div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.2.2/angular-local-storage.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
